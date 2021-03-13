@@ -68,5 +68,47 @@ internal class SeidelAlgorithmTest {
                 )
             )
         )
+        assertArrayEquals(
+            arrayOf(
+                intArrayOf(0, 1, 0),
+                intArrayOf(1, 0, 0),
+                intArrayOf(0, 0, 0),
+            ),
+            SeidelAlgorithm.calculateDistanceMatrix(
+                arrayOf(
+                    intArrayOf(0, 1, 0),
+                    intArrayOf(1, 0, 0),
+                    intArrayOf(0, 0, 0),
+                ),
+            )
+        )
+        assertArrayEquals(
+            arrayOf(
+                intArrayOf(0, 1, 2),
+                intArrayOf(1, 0, 1),
+                intArrayOf(2, 1, 0),
+            ),
+            SeidelAlgorithm.calculateDistanceMatrix(
+                arrayOf(
+                    intArrayOf(0, 1, 0),
+                    intArrayOf(1, 0, 1),
+                    intArrayOf(0, 1, 0),
+                ),
+            )
+        )
+        assertArrayEquals(
+            arrayOf(
+                intArrayOf(0, 1, 1),
+                intArrayOf(1, 0, 2),
+                intArrayOf(1, 2, 0),
+            ),
+            SeidelAlgorithm.calculateDistanceMatrix(
+                arrayOf(
+                    intArrayOf(0, 1, 1),
+                    intArrayOf(1, 0, 0),
+                    intArrayOf(1, 0, 0),
+                ),
+            )
+        )
     }
 }

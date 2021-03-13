@@ -56,26 +56,36 @@ object SeidelAlgorithm {
             var currentReachabilityMatrix = initialReachabilityMatrix
             var currN = 1
             while (currN < initialReachabilityMatrix.size) {
-                currentReachabilityMatrix *= currentReachabilityMatrix
-                truncateValuesAndClearDiagonal(currentReachabilityMatrix)
-                add(currentReachabilityMatrix)
+                currentReachabilityMatrix = truncateValues(currentReachabilityMatrix * currentReachabilityMatrix)
+                add(clearDiagonal(currentReachabilityMatrix))
                 currN *= 2
             }
         }
 
     /**
-     * Truncate all the values greater than 1 to 1. Also, set 0 at the diagonal positions.
+     * Get copy of the [matrix] but with 1 instead of all the positive values.
      */
-    private fun truncateValuesAndClearDiagonal(matrix: StrassenMatrix) {
+    private fun truncateValues(matrix: StrassenMatrix): StrassenMatrix {
+        val newMatrix = Array(matrix.size) { IntArray(matrix.size) }
         for (i in 0 until matrix.size) {
             for (j in 0 until matrix.size) {
-                if (i == j) {
-                    matrix[i, j] = 0
-                } else if (matrix[i, j] > 1) {
-                    matrix[i, j] = 1
-                }
+                newMatrix[i][j] = matrix[i, j].coerceAtMost(1)
             }
         }
+        return StrassenMatrix(newMatrix)
+    }
+
+    /**
+     * Get copy of the [matrix] but with 0 set on the main diagonal.
+     */
+    private fun clearDiagonal(matrix: StrassenMatrix): StrassenMatrix {
+        val newMatrix = Array(matrix.size) { IntArray(matrix.size) }
+        for (i in 0 until matrix.size) {
+            for (j in 0 until matrix.size) {
+                newMatrix[i][j] = if (i == j) 0 else matrix[i, j]
+            }
+        }
+        return StrassenMatrix(newMatrix)
     }
 
     /**
@@ -103,6 +113,9 @@ object SeidelAlgorithm {
                 for (j in matrix.indices) {
                     set(i, j, if (i == j) 1 else matrix[i][j])
                 }
+            }
+            for (i in matrix.size until strassenMatrixSize) {
+                set(i, i, 1)
             }
         }
     }
