@@ -5,22 +5,6 @@ import kotlin.test.assertEquals
 internal class StrassenMatrixTest {
 
     @Test
-    fun get() {
-    }
-
-    @Test
-    fun set() {
-    }
-
-    @Test
-    fun plus() {
-    }
-
-    @Test
-    fun minus() {
-    }
-
-    @Test
     fun times() {
         assertEquals(
             expected = StrassenMatrix(arrayOf(intArrayOf(6))),

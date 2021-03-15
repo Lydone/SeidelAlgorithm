@@ -8,6 +8,9 @@ typealias IntMatrix = Array<IntArray>
  */
 class StrassenMatrix(private val matrix: IntMatrix) {
 
+    /**
+     * Create matrix of size [size] with all the values set `0`.
+     */
     constructor(size: Int) : this(Array(size) { IntArray(size) })
 
     init {
