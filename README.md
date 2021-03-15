@@ -15,7 +15,7 @@ Clone the project and open it in the [IntelliJIDEA](https://www.jetbrains.com/id
 
 * Run `main` method in `main.kt` file in order to launch project. 
 * Run `SeidelAlgorithmTest`and `StrassenMatrixTest` in order to run tests.
-* One more to run all the test is to launch `test` [Gradle](https://gradle.org/) task.
+* One more way to run all the test is to launch `test` [Gradle](https://gradle.org/) task.
 
 ## GitHub Actions
 Automated tests are launched on every push or pull request. These tests include all the tests in `SeidelAlgorithmTest`and `StrassenMatrixTest` files.
